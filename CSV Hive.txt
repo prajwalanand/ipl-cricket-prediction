@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS CampaignDB 
+(isano int,
+MemberName string,
+cityordist string,
+state string,
+mobile int,
+email string,
+memtype string) 
+comment 'Doc Campaign data' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' --if it is comma separated file
+STORED AS TEXTFILE;
+location '/user/hadoop/input/campaignDB-sample.csv';
+The above will create the metadata. To load data,
+
+LOAD DATA LOCAL INPATH '/user/hadoop/input/campaignDB-sample.csv' OVERWRITE INTO TABLE CampaignDB;

@@ -1,0 +1,1 @@
+select sum(zeroes), sum(ones), sum(twos), sum(threes), sum(fours), sum(fives), sum(sixes), sum(sevens), sum(dismissed), sum(balls) from (select distinct batsmen.player as bat, bowlers.player as bowl from batsmen join bowlers where batsmen.cluster=4 and bowlers.cluster=4) players join pvp where bat=batsman and bowl=bowler;

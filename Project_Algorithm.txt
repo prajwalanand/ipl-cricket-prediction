@@ -1,0 +1,33 @@
+algorithm ipl:
+
+read table of player, cluster
+read table of probabilities
+estimate cumulative probabilities
+
+input : list of batsmen in order, bowlers in order
+
+for team 1 batting, team 2 bowling:
+	initialize batsman1, batsman2
+	initialize probabilities of getting out
+	initialize next batsman
+	repeat 6 times for each bowler:
+		lookup from probability table
+		probability of not getting out *= (i - prob for current batsman, bowler pair)
+		if probability that he will survive this ball < threshold:
+			batsman is out
+			if wickets = 10:
+				break
+			else:
+				next batsman, next ball( continue )
+		generate random number between 0 and 1
+		runs = interval of cumulative probability
+		if runs is 1, 3:
+			swap batsman1, batsman2
+		add total runs
+	swap batsmen
+
+repeat above for other team batting/bowling
+
+compare total runs for each
+
+team with higher runs is the winner
